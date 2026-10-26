@@ -1,0 +1,196 @@
+<!-- #################################################################### -->
+<!-- ##                                                                ## -->
+<!-- ##  GroupLibrariesIterators.xml                      Stefan Kohl  ## -->
+<!-- ##  Iterators documentation                                       ## -->
+<!-- ##                                                                ## -->
+<!-- #################################################################### -->
+
+<Chapter Label="ch:IteratorsOfGroupLibraries">
+<Heading>Iterators running over group libraries</Heading>
+
+<Ignore Remark="set screen width to 75, for the example tester">
+<Example>
+<![CDATA[
+gap> SizeScreen([75,24]);;
+]]>
+</Example>
+</Ignore>
+
+<!-- #################################################################### -->
+
+<Section Label="sec:IteratingOverTheSmallGroupsLibrary">
+<Heading>Iterating over the Small Groups Library</Heading>
+
+<ManSection>
+  <Func Name="SmallGroupsIterator" Arg=""
+        Label="starting at order 1"/>
+  <Func Name="SmallGroupsIterator" Arg="start"
+        Label="starting at given order"/>
+  <Func Name="SmallGroupsIterator" Arg="start, finish"
+        Label="over range of orders"/>
+  <Returns>
+    an iterator which iterates over the groups stored in &GAP;'s
+    Small Groups Library, sorted by ascending order, starting at order
+    <A>start</A> if specified, up to order <A>finish</A> if specified.
+  </Returns>
+  <Description>
+    Default values for <A>start</A> and <A>finish</A> are 1 and the limit
+    imposed by the Small Groups Library, respectively.
+    If the option <C>nonsolvable</C> is set, solvable groups are omitted.
+<Example>
+<![CDATA[
+gap> iter := SmallGroupsIterator();
+<iterator running over the Small Groups Library>
+gap> First(iter,G->not IsAbelian(G));
+<pc group of size 6 with 2 generators>
+gap> StructureDescription(last);
+"S3"
+gap> First(iter,G->not IsAbelian(G) and IsSimple(G));
+Alt( [ 1 .. 5 ] )
+gap> ForAny(SmallGroupsIterator(1,59),
+>           G->not IsAbelian(G) and IsSimple(G));
+false
+gap> ForAny(SmallGroupsIterator(1,60),
+>           G->not IsAbelian(G) and IsSimple(G));
+true
+gap> ForAll(SmallGroupsIterator(61,119),G->IsSolvable(G));
+true
+gap> iter := SmallGroupsIterator();
+<iterator running over the Small Groups Library>
+gap> G := First(iter,G->CommutatorLength(G)<>1);
+<pc group of size 96 with 6 generators>
+gap> StructureDescription(G);
+"((C4 x C2) : C4) : C3"
+]]>
+</Example>
+  </Description>
+</ManSection>
+
+</Section>
+
+<!-- #################################################################### -->
+
+<Section Label="sec:IteratingOverTheTransitiveGroupsLibrary">
+<Heading>Iterating over the Transitive Groups Library</Heading>
+
+<ManSection>
+  <Func Name="TransitiveGroupsIterator" Arg=""
+        Label="starting at degree 2"/>
+  <Func Name="TransitiveGroupsIterator" Arg="start"
+        Label="starting at given degree"/>
+  <Func Name="TransitiveGroupsIterator" Arg="start, finish"
+        Label="over range of degrees"/>
+  <Returns>
+    an iterator which iterates over the groups stored in &GAP;'s
+    Transitive Groups Library, sorted by ascending degree, starting at
+    degree <A>start</A> if specified, up to degree <A>finish</A>
+    if specified.
+  </Returns>
+  <Description>
+    Default values for <A>start</A> and <A>finish</A> are 1 and the degree
+    limit imposed by the Transitive Groups Library, respectively.
+<Example>
+<![CDATA[
+gap> iter := TransitiveGroupsIterator(); 
+<iterator running over the Transitive Groups Library>
+gap> NextIterator(iter);
+S2
+gap> NextIterator(iter);
+A3
+gap> NextIterator(iter);
+S3
+gap> NextIterator(iter);
+C(4) = 4
+gap> NextIterator(iter);
+E(4) = 2[x]2
+gap> NextIterator(iter);
+D(4)
+gap> NextIterator(iter);
+A4
+gap> NextIterator(iter);
+S4
+gap> iter := TransitiveGroupsIterator();
+<iterator running over the Transitive Groups Library>
+gap> First( iter, G -> not IsSolvable(G) and IsPrimitive(G)
+>                      and Transitivity(G,MovedPoints(G)) < 2 );
+A_5(10)
+gap> L := [];;
+gap> for G in TransitiveGroupsIterator(4,6) do Add(L,G); od;
+gap> L;
+[ C(4) = 4, E(4) = 2[x]2, D(4), A4, S4, C(5) = 5, D(5) = 5:2, 
+  F(5) = 5:4, A5, S5, C(6) = 6 = 3[x]2, D_6(6) = [3]2, D(6) = S(3)[x]2, 
+  A_4(6) = [2^2]3, F_18(6) = [3^2]2 = 3 wr 2, 2A_4(6) = [2^3]3 = 2 wr 3, 
+  S_4(6d) = [2^2]S(3), S_4(6c) = 1/2[2^3]S(3), F_18(6):2 = [1/2.S(3)^2]2,
+  F_36(6) = 1/2[S(3)^2]2, 2S_4(6) = [2^3]S(3) = 2 wr S(3), 
+  L(6) = PSL(2,5) = A_5(6), F_36(6):2 = [S(3)^2]2 = S(3) wr 2, 
+  L(6):2 = PGL(2,5) = S_5(6), A6, S6 ]
+]]>
+</Example>
+  </Description>
+</ManSection>
+
+</Section>
+
+<!-- #################################################################### -->
+
+<Section Label="sec:IteratingOverThePerfectGroupsLibrary">
+<Heading>Iterating over the Perfect Groups Library</Heading>
+
+<ManSection>
+  <Func Name="PerfectGroupsIterator" Arg=""
+        Label="starting at order 1"/>
+  <Func Name="PerfectGroupsIterator" Arg="start"
+        Label="starting at given order"/>
+  <Func Name="PerfectGroupsIterator" Arg="start, finish"
+        Label="over range of orders"/>
+  <Returns>
+    an iterator which iterates over the groups stored in &GAP;'s
+    Perfect Groups Library, sorted by ascending order, starting at order
+    <A>start</A> if specified, up to order <A>finish</A> if specified.
+  </Returns>
+  <Description>
+    Default values for <A>start</A> and <A>finish</A> are 1 and the limit
+    imposed by the Perfect Groups Library, respectively.
+<Example>
+<![CDATA[
+gap> iter := PerfectGroupsIterator();
+<iterator running over the Perfect Groups Library>
+gap> NextIterator(iter);
+Idgroup
+gap> NextIterator(iter);
+A5
+gap> NextIterator(iter);
+A5 2^1
+gap> NextIterator(iter);
+L3(2)
+gap> iter := PerfectGroupsIterator();;
+gap> First(iter,G->Size(Centre(G)) > RootInt(Size(G),3));
+A5 2^1 x ( 2^4 E ( 2^1 A x 2^1 A ) ) C ( 2^1 x 2^1 )
+gap> Size(Centre(G));
+32
+gap> Size(G);
+30720
+gap> 32^3;
+32768
+gap> iter := PerfectGroupsIterator(100000);
+<iterator running over the Perfect Groups Library>
+gap> NextIterator(iter);
+A5 2^1 29^2
+gap> 
+gap> NextIterator(iter);
+L2(59)
+gap> NextIterator(iter);
+L2(47) 2^1 = SL(2,47)
+]]>
+</Example>
+  </Description>
+</ManSection>
+
+</Section>
+
+<!-- #################################################################### -->
+
+</Chapter>
+
+<!-- #################################################################### -->
+

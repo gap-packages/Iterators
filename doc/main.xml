@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE Book SYSTEM "../../gapdoc/gapdoc.dtd"
+ [ <!ENTITY Iterators "<Package>Iterators</Package>"> ] >
+<?LaTeX ExtraPreamble=""?>
+
+<!-- #################################################################### -->
+<!-- ##                                                                ## -->
+<!-- ##  main.xml         Iterators documentation         Stefan Kohl  ## -->
+<!-- ##                                                                ## -->
+<!-- #################################################################### -->
+
+<Book Name="Iterators"> 
+
+<!-- #################################################################### -->
+
+<#Include SYSTEM "title.xml">
+
+<!-- #################################################################### -->
+
+<TableOfContents/>
+
+<!-- #################################################################### -->
+
+<Body>
+
+<#Include SYSTEM "UtilitiesForPrimes.xml">
+<#Include SYSTEM "GroupLibrariesIterators.xml">
+<#Include SYSTEM "SimpleGroupsSizesIterator.xml">
+<#Include SYSTEM "IteratorsAux.xml">
+
+</Body>
+
+<!-- #################################################################### -->
+
+<Bibliography Databases="IteratorsBib.xml"/>
+
+<TheIndex/>
+
+<!-- #################################################################### -->
+
+</Book>
+
+<!-- #################################################################### -->

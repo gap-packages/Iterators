@@ -1,0 +1,12 @@
+<!-- #################################################################### -->
+<!-- ##                                                                ## -->
+<!-- ##  abstract.xml       Iterators documentation       Stefan Kohl  ## -->
+<!-- ##                                                                ## -->
+<!-- #################################################################### -->
+
+  &Iterators; is a package for &GAP; 4 which implements iterators running
+  over the orders and descriptions of non-abelian finite simple groups
+  sorted by increasing order, and iterators running over the groups contained
+  in various group libraries coming with &GAP;.
+
+<!-- #################################################################### -->

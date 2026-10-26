@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- ########################################################################################### -->
+<!-- ##                                                                                       ## -->
+<!-- ##  IteratorsBib.xml                Iterators documentation                 Stefan Kohl  ## -->
+<!-- ##                                                                                       ## -->
+<!-- ########################################################################################### -->
+
+<!DOCTYPE file SYSTEM "../../gapdoc/bibxmlext.dtd"[]>
+
+<file>
+
+<entry id="ATLAS"><book>
+  <author>
+    <name><first>J. H.</first><last>Conway</last></name>
+    <name><first>R. T.</first><last>Curtis</last></name>
+    <name><first>S. P.</first><last>Norton</last></name>
+    <name><first>R. A.</first><last>Parker</last></name>
+    <name><first>R. A.</first><last>Wilson</last></name>
+  </author>
+  <title>
+    Atlas of finite groups. Maximal subgroups and ordinary characters
+    for simple groups. With comput. assist. from J. G. Thackray.
+  </title>
+  <publisher>Oxford: Clarendon Press</publisher>
+  <year>1985</year>
+</book></entry>
+
+<entry id="PrimeCount"><manual>
+  <author>
+    <name><first>Kim</first><last>Walisch</last></name>
+  </author>
+  <title><C>primecount 5.3</C></title>
+  <year>2020</year>
+  <other type="note">
+    <URL>https://github.com/kimwalisch/primecount</URL>
+  </other>
+</manual></entry>
+
+</file>
+
+<!-- ########################################################################################### -->

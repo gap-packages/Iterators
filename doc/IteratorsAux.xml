@@ -1,0 +1,71 @@
+<!-- #################################################################### -->
+<!-- ##                                                                ## -->
+<!-- ##  IteratorsAux.xml     Iterators documentation     Stefan Kohl  ## -->
+<!-- ##                                                                ## -->
+<!-- #################################################################### -->
+
+<Chapter Label="ch:InstallationAndAuxiliaryFunctions">
+<Heading>Installation and Auxiliary Functions</Heading>
+
+<!-- #################################################################### -->
+
+<Section Label="sec:Requirements">
+<Heading>Requirements</Heading>
+
+This version of &Iterators; needs at least &GAP;&nbsp;4.10.2 with the default
+set of included packages. It is completely written in the &GAP; language,
+and can be used on all platforms for which &GAP; is available.
+However, some functionality requires the program
+<C>primecount</C>&nbsp;<Cite Key="PrimeCount"/> by Kim Walisch
+to be installed on the system.
+
+</Section>
+
+<!-- #################################################################### -->
+
+<Section Label="sec:Installation">
+
+<Heading>Installation</Heading>
+
+Like any other &GAP; package, &Iterators; is usually installed in the
+<F>pkg</F> subdirectory of the &GAP; distribution. This is accomplished by
+extracting the distribution file in this directory. As usual, you can load
+&Iterators; via <C>LoadPackage( "iterators" );</C>.
+
+</Section>
+
+<!-- #################################################################### -->
+
+<Section Label="sec:TheTestingRoutines">
+<Heading>The testing routines</Heading>
+
+<ManSection>
+  <Func Name="IteratorsTest" Arg=""/>
+  <Returns>
+    <C>true</C> if no errors were found, and <C>false</C> otherwise.
+  </Returns>
+  <Description>
+    Performs tests of the &Iterators; package.
+    Errors, i.e. differences to the correct results of the test computations,
+    are reported. The processed test files are in the directory
+    <F>pkg/iterators/tst</F>.
+  </Description>
+</ManSection>
+
+<ManSection>
+  <Func Name="IteratorsTestExamples" Arg=""/>
+  <Returns> nothing. </Returns>
+  <Description>
+    Runs all examples in the manual of the &Iterators; package,
+    and reports any differences between the actual output and the
+    output printed in the manual.
+  </Description>
+</ManSection>
+
+</Section>
+
+<!-- #################################################################### -->
+
+</Chapter>
+
+<!-- #################################################################### -->
