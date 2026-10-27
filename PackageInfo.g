@@ -23,7 +23,7 @@ Persons          := [
 Status           := "dev",
 
 PackageWWWHome  := "https://gap-packages.github.io/iterators/",
-README_URL      := Concatenation( ~.PackageWWWHome, "README"        ),
+README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
 PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 SourceRepository := rec( Type := "git",
                          URL  := "https://github.com/gap-packages/iterators" ),
