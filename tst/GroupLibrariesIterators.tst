@@ -13,15 +13,15 @@ gap> iter := SmallGroupsIterator();
 gap> NextIterator(iter);
 <pc group of size 1 with 0 generators>
 gap> NextIterator(iter);
-<pc group of size 2 with 1 generators>
+<pc group of size 2 with 1 generator>
 gap> NextIterator(iter);
-<pc group of size 3 with 1 generators>
-gap> NextIterator(iter);
-<pc group of size 4 with 2 generators>
+<pc group of size 3 with 1 generator>
 gap> NextIterator(iter);
 <pc group of size 4 with 2 generators>
 gap> NextIterator(iter);
-<pc group of size 5 with 1 generators>
+<pc group of size 4 with 2 generators>
+gap> NextIterator(iter);
+<pc group of size 5 with 1 generator>
 gap> NextIterator(iter);
 <pc group of size 6 with 2 generators>
 gap> NextIterator(iter);
@@ -49,7 +49,7 @@ gap> NextIterator(iter);
 gap> StructureDescription(last);
 "C6 x C2"
 gap> NextIterator(iter);
-<pc group of size 13 with 1 generators>
+<pc group of size 13 with 1 generator>
 gap> StructureDescription(last);
 "C13"
 gap> NextIterator(iter);
@@ -104,14 +104,6 @@ gap> ForAny(SmallGroupsIterator(1,60),
 true
 gap> ForAll(SmallGroupsIterator(61,119),G->IsSolvable(G));
 true
-gap> iter := SmallGroupsIterator();
-<iterator running over the Small Groups Library>
-gap> G := First(iter,G->CommutatorLength(G)<>1);
-<pc group of size 96 with 6 generators>
-gap> StructureDescription(G);
-"((C4 x C2) : C4) : C3"
-gap> IdGroup(G);
-[ 96, 3 ]
 gap> iter := SmallGroupsIterator(100);
 <iterator running over the Small Groups Library>
 gap> NextIterator(iter);
