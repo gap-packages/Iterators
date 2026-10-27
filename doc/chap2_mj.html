@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (Iterators) - Chapter 2: Iterators running over group libraries</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap2"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap2.html">[MathJax off]</a></p>
+<p><a id="X824D282B7944327F" name="X824D282B7944327F"></a></p>
+<div class="ChapSects"><a href="chap2_mj.html#X824D282B7944327F">2 <span class="Heading">Iterators running over group libraries</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7EC4C52E80E90391">2.1 <span class="Heading">Iterating over the Small Groups Library</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7F0F3C0A7989B08E">2.1-1 SmallGroupsIterator</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X80122D51838C8113">2.2 <span class="Heading">Iterating over the Transitive Groups Library</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X78C945AD87969ED6">2.2-1 TransitiveGroupsIterator</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X875F7F737EE521AA">2.3 <span class="Heading">Iterating over the Perfect Groups Library</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X84CE9B9C87DFAFFD">2.3-1 PerfectGroupsIterator</a></span>
+</div></div>
+</div>
+
+<h3>2 <span class="Heading">Iterators running over group libraries</span></h3>
+
+<p><a id="X7EC4C52E80E90391" name="X7EC4C52E80E90391"></a></p>
+
+<h4>2.1 <span class="Heading">Iterating over the Small Groups Library</span></h4>
+
+<p><a id="X7F0F3C0A7989B08E" name="X7F0F3C0A7989B08E"></a></p>
+
+<h5>2.1-1 SmallGroupsIterator</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SmallGroupsIterator</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SmallGroupsIterator</code>( <var class="Arg">start</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SmallGroupsIterator</code>( <var class="Arg">start</var>, <var class="Arg">finish</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: an iterator which iterates over the groups stored in <strong class="pkg">GAP</strong>'s Small Groups Library, sorted by ascending order, starting at order <var class="Arg">start</var> if specified, up to order <var class="Arg">finish</var> if specified.</p>
+
+<p>Default values for <var class="Arg">start</var> and <var class="Arg">finish</var> are 1 and the limit imposed by the Small Groups Library, respectively. If the option <code class="code">nonsolvable</code> is set, solvable groups are omitted.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iter := SmallGroupsIterator();</span>
+&lt;iterator running over the Small Groups Library&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">First(iter,G-&gt;not IsAbelian(G));</span>
+&lt;pc group of size 6 with 2 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StructureDescription(last);</span>
+"S3"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">First(iter,G-&gt;not IsAbelian(G) and IsSimple(G));</span>
+Alt( [ 1 .. 5 ] )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ForAny(SmallGroupsIterator(1,59),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">          G-&gt;not IsAbelian(G) and IsSimple(G));</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ForAny(SmallGroupsIterator(1,60),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">          G-&gt;not IsAbelian(G) and IsSimple(G));</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ForAll(SmallGroupsIterator(61,119),G-&gt;IsSolvable(G));</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iter := SmallGroupsIterator();</span>
+&lt;iterator running over the Small Groups Library&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := First(iter,G-&gt;CommutatorLength(G)&lt;&gt;1);</span>
+&lt;pc group of size 96 with 6 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StructureDescription(G);</span>
+"((C4 x C2) : C4) : C3"
+
+</pre></div>
+
+<p><a id="X80122D51838C8113" name="X80122D51838C8113"></a></p>
+
+<h4>2.2 <span class="Heading">Iterating over the Transitive Groups Library</span></h4>
+
+<p><a id="X78C945AD87969ED6" name="X78C945AD87969ED6"></a></p>
+
+<h5>2.2-1 TransitiveGroupsIterator</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TransitiveGroupsIterator</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TransitiveGroupsIterator</code>( <var class="Arg">start</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TransitiveGroupsIterator</code>( <var class="Arg">start</var>, <var class="Arg">finish</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: an iterator which iterates over the groups stored in <strong class="pkg">GAP</strong>'s Transitive Groups Library, sorted by ascending degree, starting at degree <var class="Arg">start</var> if specified, up to degree <var class="Arg">finish</var> if specified.</p>
+
+<p>Default values for <var class="Arg">start</var> and <var class="Arg">finish</var> are 1 and the degree limit imposed by the Transitive Groups Library, respectively.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iter := TransitiveGroupsIterator(); </span>
+&lt;iterator running over the Transitive Groups Library&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+S2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+A3
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+S3
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+C(4) = 4
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+E(4) = 2[x]2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+D(4)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+A4
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+S4
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iter := TransitiveGroupsIterator();</span>
+&lt;iterator running over the Transitive Groups Library&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">First( iter, G -&gt; not IsSolvable(G) and IsPrimitive(G)</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                     and Transitivity(G,MovedPoints(G)) &lt; 2 );</span>
+A_5(10)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := [];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">for G in TransitiveGroupsIterator(4,6) do Add(L,G); od;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L;</span>
+[ C(4) = 4, E(4) = 2[x]2, D(4), A4, S4, C(5) = 5, D(5) = 5:2, 
+  F(5) = 5:4, A5, S5, C(6) = 6 = 3[x]2, D_6(6) = [3]2, D(6) = S(3)[x]2, 
+  A_4(6) = [2^2]3, F_18(6) = [3^2]2 = 3 wr 2, 2A_4(6) = [2^3]3 = 2 wr 3, 
+  S_4(6d) = [2^2]S(3), S_4(6c) = 1/2[2^3]S(3), F_18(6):2 = [1/2.S(3)^2]2,
+  F_36(6) = 1/2[S(3)^2]2, 2S_4(6) = [2^3]S(3) = 2 wr S(3), 
+  L(6) = PSL(2,5) = A_5(6), F_36(6):2 = [S(3)^2]2 = S(3) wr 2, 
+  L(6):2 = PGL(2,5) = S_5(6), A6, S6 ]
+
+</pre></div>
+
+<p><a id="X875F7F737EE521AA" name="X875F7F737EE521AA"></a></p>
+
+<h4>2.3 <span class="Heading">Iterating over the Perfect Groups Library</span></h4>
+
+<p><a id="X84CE9B9C87DFAFFD" name="X84CE9B9C87DFAFFD"></a></p>
+
+<h5>2.3-1 PerfectGroupsIterator</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PerfectGroupsIterator</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PerfectGroupsIterator</code>( <var class="Arg">start</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PerfectGroupsIterator</code>( <var class="Arg">start</var>, <var class="Arg">finish</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: an iterator which iterates over the groups stored in <strong class="pkg">GAP</strong>'s Perfect Groups Library, sorted by ascending order, starting at order <var class="Arg">start</var> if specified, up to order <var class="Arg">finish</var> if specified.</p>
+
+<p>Default values for <var class="Arg">start</var> and <var class="Arg">finish</var> are 1 and the limit imposed by the Perfect Groups Library, respectively.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iter := PerfectGroupsIterator();</span>
+&lt;iterator running over the Perfect Groups Library&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+Idgroup
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+A5
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+A5 2^1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+L3(2)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iter := PerfectGroupsIterator();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">First(iter,G-&gt;Size(Centre(G)) &gt; RootInt(Size(G),3));</span>
+A5 2^1 x ( 2^4 E ( 2^1 A x 2^1 A ) ) C ( 2^1 x 2^1 )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size(Centre(G));</span>
+32
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size(G);</span>
+30720
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">32^3;</span>
+32768
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iter := PerfectGroupsIterator(100000);</span>
+&lt;iterator running over the Perfect Groups Library&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+A5 2^1 29^2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"></span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+L2(59)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+L2(47) 2^1 = SL(2,47)
+
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

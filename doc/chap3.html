@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (Iterators) - Chapter 3: Iterators running over orders of simple groups</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap3"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap3_mj.html">[MathJax on]</a></p>
+<p><a id="X7B0D46217FA77C04" name="X7B0D46217FA77C04"></a></p>
+<div class="ChapSects"><a href="chap3.html#X7B0D46217FA77C04">3 <span class="Heading">Iterators running over orders of simple groups</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X87550AA07804314C">3.1 <span class="Heading">Iterating over the orders of simple groups</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E6B43C07E5E7C53">3.1-1 SimpleGroupsSizesIterator</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X853E69347B94A2A9">3.2 <span class="Heading">Counting the simple groups of order up to a given bound</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81BDD80C7E62C02F">3.2-1 NumberOfSimpleGroupsOfSizeAtMost</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7CCC066D87CB548D">3.2-2 PositionInListOfSimpleGroupsSortedBySize</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X8043B82782D14C4D">3.3 <span class="Heading">Helper functions for computing orders of simple groups</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7FF57C7D7F0AD82C">3.3-1 SizeA</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X80CF49E77B40DF01">3.3-2 SizeSpor</a></span>
+</div></div>
+</div>
+
+<h3>3 <span class="Heading">Iterators running over orders of simple groups</span></h3>
+
+<p><a id="X87550AA07804314C" name="X87550AA07804314C"></a></p>
+
+<h4>3.1 <span class="Heading">Iterating over the orders of simple groups</span></h4>
+
+<p><a id="X7E6B43C07E5E7C53" name="X7E6B43C07E5E7C53"></a></p>
+
+<h5>3.1-1 SimpleGroupsSizesIterator</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SimpleGroupsSizesIterator</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SimpleGroupsSizesIterator</code>( <var class="Arg">start</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SimpleGroupsSizesIterator</code>( <var class="Arg">start</var>, <var class="Arg">finish</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: an iterator which iterates over the orders of non-abelian finite simple groups, in ascending order, starting at order <var class="Arg">start</var> if specified, up to order <var class="Arg">finish</var> if specified.</p>
+
+<p>Numbers which are the order of two distinct simple groups occur twice. Default values for <var class="Arg">start</var> and <var class="Arg">finish</var> are 1 and <code class="code">infinity</code>, respectively. If the option <code class="code">nopsl2</code> is set, numbers which occur only as orders of groups of type <span class="SimpleMath">PSL_2(q)</span> are omitted. If the option <code class="code">names</code> is set, the iterator produces not only the group orders, but rather it gives for each group a list which contains (in that ordering) the order, the name of the series, the parameters and a common name.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iter := SimpleGroupsSizesIterator();                      </span>
+&lt;iterator of orders of simple groups&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+60
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+168
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+360
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iter := SimpleGroupsSizesIterator(1:names);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+[ 60, "Alt", [ 5 ], "A5" ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+[ 168, "A", [ 2, 2 ], "PSL(3,2)" ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+[ 360, "Alt", [ 6 ], "A6" ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+[ 504, "A", [ 1, 8 ], "PSL(2,8)" ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+[ 660, "A", [ 1, 11 ], "PSL(2,11)" ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iter := SimpleGroupsSizesIterator(1:nopsl2,names);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+[ 60, "Alt", [ 5 ], "A5" ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+[ 168, "A", [ 2, 2 ], "PSL(3,2)" ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+[ 360, "Alt", [ 6 ], "A6" ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+[ 2520, "Alt", [ 7 ], "A7" ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NextIterator(iter);</span>
+[ 5616, "A", [ 2, 3 ], "PSL(3,3)" ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iter := SimpleGroupsSizesIterator(1,10^20:names);</span>
+&lt;iterator of orders of simple groups&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := [];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">for G in iter do Add(L,G); od; </span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length(L);</span>
+403874
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Collected(List(L,l-&gt;l[2]));</span>
+[ [ "2A", 106 ], [ "2B2", 6 ], [ "2D", 6 ], [ "2G2", 2 ], [ "3D4", 4 ], 
+  [ "A", 403638 ], [ "Alt", 17 ], [ "B", 46 ], [ "C", 5 ], [ "D", 6 ], 
+  [ "F4", 1 ], [ "G2", 13 ], [ "Spor", 24 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Filtered([1..Length(L)],i-&gt;L[i][2]="3D4"); </span>
+[ 194, 3875, 42970, 293920 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L{last};</span>
+[ [ 211341312, "3D4", [ 2 ], "3D(4,2)" ], 
+  [ 20560831566912, "3D4", [ 3 ], "3D(4,3)" ], 
+  [ 67802350642790400, "3D4", [ 4 ], "3D(4,4)" ], 
+  [ 35817806390625000000, "3D4", [ 5 ], "3D(4,5)" ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Filtered([1..Length(L)],i-&gt;L[i][2]="Spor");</span>
+[ 15, 31, 36, 46, 50, 98, 111, 138, 143, 203, 269, 388, 976, 1325, 1334, 
+  1364, 4771, 5396, 8240, 39569, 46944, 150537, 151306, 386553 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iter := SimpleGroupsSizesIterator(1,SizeSpor[27][2]+1:names,nopsl2);</span>
+&lt;iterator of orders of simple groups&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := [];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">for G in iter do Add(L,G); od;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length(L);</span>
+837104
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L[837104];           </span>
+[ 808017424794512875886459904961710757005754368000000000, "Spor", 
+  [ 27 ], "M" ]
+
+</pre></div>
+
+<p><a id="X853E69347B94A2A9" name="X853E69347B94A2A9"></a></p>
+
+<h4>3.2 <span class="Heading">Counting the simple groups of order up to a given bound</span></h4>
+
+<p>The following functions make use of the function <code class="func">PrimeCount</code> (<a href="chap1.html#X7E25406F818D48F5"><span class="RefLink">1.1-1</span></a>), and therefore require the program <code class="code">primecount</code> <a href="chapBib.html#biBPrimeCount">[Wal20]</a> by Kim Walisch to be installed on the system:</p>
+
+<p><a id="X81BDD80C7E62C02F" name="X81BDD80C7E62C02F"></a></p>
+
+<h5>3.2-1 NumberOfSimpleGroupsOfSizeAtMost</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NumberOfSimpleGroupsOfSizeAtMost</code>( <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: the number of non-abelian simple groups of order less than or equal to <var class="Arg">n</var>.</p>
+
+<p>Set the Info level of the Info class <code class="code">InfoSimpleGroupsSizes</code> to a value greater than 0 in order to get intermediate information on the progress from time to time when running a longer computation.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NumberOfSimpleGroupsOfSizeAtMost(10^10);</span>
+493
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NumberOfSimpleGroupsOfSizeAtMost(10^20);</span>
+403874
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NumberOfSimpleGroupsOfSizeAtMost(10^30);</span>
+567362181
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NumberOfSimpleGroupsOfSizeAtMost(10^40);</span>
+907948153951
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NumberOfSimpleGroupsOfSizeAtMost(10^50);</span>
+1556185805218446
+
+</pre></div>
+
+<p><a id="X7CCC066D87CB548D" name="X7CCC066D87CB548D"></a></p>
+
+<h5>3.2-2 PositionInListOfSimpleGroupsSortedBySize</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PositionInListOfSimpleGroupsSortedBySize</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: the position of the non-abelian simple group <var class="Arg">G</var> in the list of non-abelian simple groups sorted by increasing order.</p>
+
+<p>If there are two simple groups of the same order, it is not specified which of the two possible positions is returned.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PositionInListOfSimpleGroupsSortedBySize(AlternatingGroup(5));</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PositionInListOfSimpleGroupsSortedBySize(AlternatingGroup(30));</span>
+2695155612
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PositionInListOfSimpleGroupsSortedBySize(PSL(3,3));        </span>
+11
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PositionInListOfSimpleGroupsSortedBySize(PSL(5,5));</span>
+40693
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PositionInListOfSimpleGroupsSortedBySize(PSU(5,3));</span>
+1138
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PositionInListOfSimpleGroupsSortedBySize(Sz(8));   </span>
+23
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PositionInListOfSimpleGroupsSortedBySize(Sz(2^17));</span>
+22656043
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PositionInListOfSimpleGroupsSortedBySize(MathieuGroup(24));    </span>
+203
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PositionInListOfSimpleGroupsSortedBySize(SimpleGroup("HS"));</span>
+138
+
+</pre></div>
+
+<p><a id="X8043B82782D14C4D" name="X8043B82782D14C4D"></a></p>
+
+<h4>3.3 <span class="Heading">Helper functions for computing orders of simple groups</span></h4>
+
+<p><a id="X7FF57C7D7F0AD82C" name="X7FF57C7D7F0AD82C"></a></p>
+
+<h5>3.3-1 SizeA</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SizeA</code>( <var class="Arg">n</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Size2A</code>( <var class="Arg">n</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SizeB</code>( <var class="Arg">n</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Size2B2</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SizeC</code>( <var class="Arg">n</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SizeD</code>( <var class="Arg">n</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Size2D</code>( <var class="Arg">n</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Size3D4</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SizeG2</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Size2G2</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SizeF4</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Size2F4</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SizeE6</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Size2E6</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SizeE7</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SizeE8</code>( <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SizeAlt</code>( <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: the order of the simple group from the series indicated by the name of the respective function, specified by the parameters passed as arguments.</p>
+
+<p>The formulas for the group orders have been taken from the Atlas of finite groups <a href="chapBib.html#biBATLAS">[CCN+85]</a>.</p>
+
+
+<div class="example"><pre>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SizeA(1,5);</span>
+60
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size2A(5,5);</span>
+468755520187500000000000
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size3D4(17); </span>
+28253328918503724754683541171725312
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SizeE6(2);  </span>
+214841575522005575270400
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SizeE8(2);</span>
+3378047531436348062613881906140855950799916922424676515761609599090688000\
+00
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SizeAlt(6);  </span>
+360
+
+</pre></div>
+
+<p><a id="X80CF49E77B40DF01" name="X80CF49E77B40DF01"></a></p>
+
+<h5>3.3-2 SizeSpor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SizeSpor</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
+<p>A list of the orders of the 26 sporadic simple groups and the Tits group, as follows:</p>
+
+
+<div class="example"><pre>
+
+[ [ "M11", 7920 ], [ "M12", 95040 ], [ "J_1", 175560 ], 
+  [ "M22", 443520 ], [ "J_2", 604800 ], [ "M23", 10200960 ], 
+  [ "2F(4,2)'", 17971200 ], [ "HS", 44352000 ], [ "J_3", 50232960 ], 
+  [ "M24", 244823040 ], [ "McL", 898128000 ], [ "He", 4030387200 ], 
+  [ "Ru", 145926144000 ], [ "Suz", 448345497600 ], 
+  [ "ON", 460815505920 ], [ "Co_3", 495766656000 ], 
+  [ "Co_2", 42305421312000 ], [ "Fi22", 64561751654400 ], 
+  [ "HN", 273030912000000 ], [ "Ly", 51765179004000000 ], 
+  [ "Th", 90745943887872000 ], [ "Fi23", 4089470473293004800 ], 
+  [ "Co_1", 4157776806543360000 ], [ "J_4", 86775571046077562880 ], 
+  [ "Fi24'", 1255205709190661721292800 ], 
+  [ "B", 4154781481226426191177580544000000 ], 
+  [ "M", 808017424794512875886459904961710757005754368000000000 ] ]
+
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

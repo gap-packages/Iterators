@@ -1,11 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-	<meta charset="UTF-8" />
-	<title>Placeholder</title>
+<title>GAP (Iterators) - Contents</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
 </head>
-<body>
-<h1>Placeholder!</h1>
-<a href="..">Back</a>
+<body class="chap0"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap0_mj.html">[MathJax on]</a></p>
+<p><a id="X7D2C85EC87DD46E5" name="X7D2C85EC87DD46E5"></a></p>
+<div class="pcenter">
+
+<h1>Iterators</h1>
+
+
+<h2>Iterators of orders of simple groups and more</h2>
+
+<p>
+    1.0.0</p>
+
+<p>
+    27 October 2026
+  </p>
+
+</div>
+<p><b>
+    Stefan Kohl
+
+
+  </b>
+<br />Email: <span class="URL"><a href="mailto:sk239@st-andrews.ac.uk">sk239@st-andrews.ac.uk</a></span>
+<br />Homepage: <span class="URL"><a href="https://stefan-kohl.github.io/">https://stefan-kohl.github.io/</a></span>
+</p>
+
+<p><a id="X7AA6C5737B711C89" name="X7AA6C5737B711C89"></a></p>
+<h3>Abstract</h3>
+<p><strong class="pkg">Iterators</strong> is a package for <strong class="pkg">GAP</strong> 4 which implements iterators running over the orders and descriptions of non-abelian finite simple groups sorted by increasing order, and iterators running over the groups contained in various group libraries coming with <strong class="pkg">GAP</strong>.</p>
+
+<p><a id="X81488B807F2A1CF1" name="X81488B807F2A1CF1"></a></p>
+<h3>Copyright</h3>
+<p>© 2020 by Stefan Kohl.</p>
+
+<p><strong class="pkg">Iterators</strong> is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version.</p>
+
+<p><strong class="pkg">Iterators</strong> is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+
+<p>For a copy of the GNU General Public License, see the file <code class="file">GPL</code> in the <code class="file">etc</code> directory of the <strong class="pkg">GAP</strong> distribution or see <span class="URL"><a href="https://www.gnu.org/licenses/gpl.html">https://www.gnu.org/licenses/gpl.html</a></span>.</p>
+
+<p><a id="X8537FEB07AF2BEC8" name="X8537FEB07AF2BEC8"></a></p>
+
+<div class="contents">
+<h3>Contents<a id="contents" name="contents"></a></h3>
+
+<div class="ContChap"><a href="chap1.html#X865F7DF180C9C733">1 <span class="Heading">Utility functions for prime numbers</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7CE4068D7FE2A096">1.1 <span class="Heading">Counting prime numbers and finding the <span class="SimpleMath">n</span>th prime</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7E25406F818D48F5">1.1-1 PrimeCount</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7EEF37FC7AF548A1">1.1-2 NthPrime</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X80C78DEE7ECAD8D9">1.2 <span class="Heading">Iterating over the prime powers</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X80F063E47D5AB16B">1.2-1 PrimePowersIteratior</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap2.html#X824D282B7944327F">2 <span class="Heading">Iterators running over group libraries</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7EC4C52E80E90391">2.1 <span class="Heading">Iterating over the Small Groups Library</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F0F3C0A7989B08E">2.1-1 SmallGroupsIterator</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X80122D51838C8113">2.2 <span class="Heading">Iterating over the Transitive Groups Library</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78C945AD87969ED6">2.2-1 TransitiveGroupsIterator</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X875F7F737EE521AA">2.3 <span class="Heading">Iterating over the Perfect Groups Library</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X84CE9B9C87DFAFFD">2.3-1 PerfectGroupsIterator</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap3.html#X7B0D46217FA77C04">3 <span class="Heading">Iterators running over orders of simple groups</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X87550AA07804314C">3.1 <span class="Heading">Iterating over the orders of simple groups</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E6B43C07E5E7C53">3.1-1 SimpleGroupsSizesIterator</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X853E69347B94A2A9">3.2 <span class="Heading">Counting the simple groups of order up to a given bound</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81BDD80C7E62C02F">3.2-1 NumberOfSimpleGroupsOfSizeAtMost</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7CCC066D87CB548D">3.2-2 PositionInListOfSimpleGroupsSortedBySize</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X8043B82782D14C4D">3.3 <span class="Heading">Helper functions for computing orders of simple groups</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7FF57C7D7F0AD82C">3.3-1 SizeA</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X80CF49E77B40DF01">3.3-2 SizeSpor</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap4.html#X859F6BF88754E5CC">4 <span class="Heading">Installation and Auxiliary Functions</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X85A08CF187A6D986">4.1 <span class="Heading">Requirements</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X8360C04082558A12">4.2 <span class="Heading">Installation</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X865D6A49826B92EC">4.3 <span class="Heading">The testing routines</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7EA139DE7E1B223C">4.3-1 IteratorsTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X827FEF447E0B951E">4.3-2 IteratorsTestExamples</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chapBib.html"><span class="Heading">References</span></a></div>
+<div class="ContChap"><a href="chapInd.html"><span class="Heading">Index</span></a></div>
+<br />
+</div>
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
 </body>
 </html>
