@@ -28,11 +28,18 @@ gap> Length(qs);
 9700
 gap> qs = Filtered([1..100000],IsPrimePowerInt);
 true
-gap> PrimeCount(10^12);
-37607912018
-gap> NthPrime(10^12);
-29996224275833
 gap> STOP_TEST( "UtilitiesForPrimes.tst" );
+
+#############################################################################
+##
+## Tests which require the external program 'primecount' to be installed
+##
+## gap> PrimeCount(10^12);
+## 37607912018
+## gap> NthPrime(10^12);
+## 29996224275833
+##
+#############################################################################
 
 #############################################################################
 ##

@@ -2052,17 +2052,24 @@ gap> PositionInListOfSimpleGroupsSortedBySize(MathieuGroup(11));
 15
 gap> PositionInListOfSimpleGroupsSortedBySize(Sz(8));           
 23
-gap> NumberOfSimpleGroupsOfSizeAtMost(SizeF4(2));
-17283
-gap> NumberOfSimpleGroupsOfSizeAtMost(Size2F4(8));
-4721721
-gap> NumberOfSimpleGroupsOfSizeAtMost(SizeE6(2)); 
-4421593
-gap> NumberOfSimpleGroupsOfSizeAtMost(Size2E6(2));
-3199322
-gap> NumberOfSimpleGroupsOfSizeAtMost(SizeE7(2)); 
-844883561753
 gap> STOP_TEST( "SimpleGroupsSizesIterator.tst" );
+
+#############################################################################
+##
+## Tests which require the external program 'primecount' to be installed
+##
+## gap> NumberOfSimpleGroupsOfSizeAtMost(SizeF4(2));
+## 17283
+## gap> NumberOfSimpleGroupsOfSizeAtMost(Size2F4(8));
+## 4721721
+## gap> NumberOfSimpleGroupsOfSizeAtMost(SizeE6(2)); 
+## 4421593
+## gap> NumberOfSimpleGroupsOfSizeAtMost(Size2E6(2));
+## 3199322
+## gap> NumberOfSimpleGroupsOfSizeAtMost(SizeE7(2)); 
+## 844883561753
+##
+#############################################################################
 
 #############################################################################
 ##
