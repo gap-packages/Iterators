@@ -9,7 +9,7 @@ SetPackageInfo( rec(
 PackageName      := "Iterators",
 Subtitle         := "Iterators of orders of simple groups and more",
 Version          := "1.0.0",
-Date             := "26/10/2026", # dd/mm/yyyy format
+Date             := "27/10/2026", # dd/mm/yyyy format
 License          := "GPL-2.0-or-later",
 Persons          := [
                       rec( LastName      := "Kohl",
